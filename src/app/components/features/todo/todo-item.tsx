@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { API } from 'app/utils/api';
 import { CharacterModel } from 'app/models/character.model';
-import { ConfirmDialog } from '../../../shared/dialog/dialog.component';
+import { ConfirmDialog } from '../../shared/dialog/dialog.component';
 
-export namespace CharacterItem {
+export namespace TodoItem {
   // Character Item property definitions
   export interface Props {
     updateCharacter: (character: CharacterModel) => void; //
@@ -16,8 +16,8 @@ export namespace CharacterItem {
   }
 }
 
-export class CharacterItem extends React.Component<CharacterItem.Props> {
-  constructor(props: CharacterItem.Props) {
+export class TodoItem extends React.Component<TodoItem.Props> {
+  constructor(props: TodoItem.Props) {
     super(props);
   }
 

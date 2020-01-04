@@ -3,7 +3,7 @@ import { CharacterModel } from 'app/models/character.model';
 import { API } from 'app/utils/api';
 import { FormValidation } from 'app/utils/form-validation';
 
-export namespace CharacterForm {
+export namespace TodoForm {
   // character form property definitions
   export interface Props {
     onSave: (obj: CharacterModel) => void;
@@ -16,8 +16,8 @@ export namespace CharacterForm {
   }
 }
 
-export class CharacterForm extends React.Component<CharacterForm.Props, CharacterForm.State> {
-  constructor(props: CharacterForm.Props) {
+export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
+  constructor(props: TodoForm.Props) {
     super(props);
     // initial state of this component
     this.state = {

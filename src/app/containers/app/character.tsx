@@ -6,9 +6,9 @@ import { RootState } from 'app/reducers';
 import { omit } from 'app/utils';
 import { Header, Footer, Alert } from 'app/components';
 import { AlertActions } from 'app/components/shared/alert/alert.actions';
-import { CharacterActions } from 'app/components/features/character/character.actions';
-import { CharacterForm } from 'app/components/features/character/components/character-form';
-import { CharacterList } from 'app/components/features/character/components/character-list';
+import { CharacterActions } from 'app/components/features/todo/character.actions';
+import { TodoForm } from 'app/components/features/todo/todo-form';
+import { TodoList } from 'app/components/features/todo/todo-list';
 
 export namespace App {
   // Character container property definitions
@@ -43,9 +43,10 @@ export class App extends React.Component<App.Props> {
       <div className="page-wrap">
         <Alert notification={notification} alerter={alertActions} />
         <Header />
+        <h1>AHihihihihihi</h1>
         <div className="container">
-          <CharacterForm onSave={actions.newCharacter} alerter={alertActions} />
-          <CharacterList
+          <TodoForm onSave={actions.newCharacter} alerter={alertActions} />
+          <TodoList
             data={pageData}
             onLoad={actions.listCharacter}
             onDelete={actions.deleteCharacter}

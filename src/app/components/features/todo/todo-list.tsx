@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { CharacterItem } from './character-item';
+import { TodoItem } from './todo-item';
 import { API } from 'app/utils/api';
 import { CharacterModel } from 'app/models/character.model';
 
-export namespace CharacterList {
+export namespace TodoList {
   // Character List property definitions
   export interface Props {
     onLoad: (data: any) => void; // action fetch data
@@ -21,8 +21,8 @@ export namespace CharacterList {
   }
 }
 
-export class CharacterList extends React.Component<CharacterList.Props, CharacterList.State> {
-  constructor(props: CharacterList.Props, state: CharacterList.State) {
+export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
+  constructor(props: TodoList.Props, state: TodoList.State) {
     super(props, state);
     // initial state of this component
     this.state = {
@@ -105,7 +105,7 @@ export class CharacterList extends React.Component<CharacterList.Props, Characte
           <tbody>
             {data && data.length ? (
               data.map((item: any, i: number) => (
-                <CharacterItem
+                <TodoItem
                   key={item.id}
                   order={i + 1}
                   character={item}
