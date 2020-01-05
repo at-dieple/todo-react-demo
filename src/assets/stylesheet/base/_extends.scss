@@ -14,3 +14,15 @@
   background-size: auto 100%;
   content: "";
 }
+%flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex-between {
+  @extend %flex-between;
+  &::before,
+  &::after {
+    display: none;
+  }
+}

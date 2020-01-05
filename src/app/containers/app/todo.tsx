@@ -40,20 +40,21 @@ export class App extends React.Component<App.Props> {
   render() {
     const { pageData, actions, alertActions, notification } = this.props;
     return (
-      <div className="page-wrap">
-        <Alert notification={notification} alerter={alertActions} />
+      <div className="page-wrap page-todo">
         <Header />
-        <h1>AHihihihihihi</h1>
-        <div className="container">
-          <TodoForm onSave={actions.newCharacter} alerter={alertActions} />
-          <TodoList
-            data={pageData}
-            onLoad={actions.listCharacter}
-            onDelete={actions.deleteCharacter}
-            onUpdate={actions.updateCharacter}
-            alerter={alertActions}
-          />
-        </div>
+        <Alert notification={notification} alerter={alertActions} />
+        <main className="page-main">
+          <div className="container">
+            <TodoForm onSave={actions.newCharacter} alerter={alertActions} />
+            <TodoList
+              data={pageData}
+              onLoad={actions.listCharacter}
+              onDelete={actions.deleteCharacter}
+              onUpdate={actions.updateCharacter}
+              alerter={alertActions}
+            />
+          </div>
+        </main>
         <Footer />
       </div>
     );

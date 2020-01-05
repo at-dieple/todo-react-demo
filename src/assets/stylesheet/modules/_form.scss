@@ -1,70 +1,55 @@
 input,
 textarea {
-  @include box-shadow(none);
   outline: none;
   margin: 0;
   border: none;
   width: 100%;
-}
-.form-input,
-.form-textarea {
-  @include border-radius(3px);
-  @include transition(all 0.4s ease);
-  @include box-shadow(inset 0 1px 1px map-get($color, rgba-black));
-  border: 1px solid map-get($color, border);
-  background: map-get($color, white);
-  padding: 8px;
-  &:focus {
-    border-color: #d0d0d0;
-    border-color: darken(map-get($color, gray-b), 11%);
-  }
+  resize: none;
 }
 .form-group {
-  margin-bottom: 24px;
   position: relative;
-  .form-label {
-    margin-bottom: 10px;
-    display: inline-block;
+}
+.input-group-addon {
+  @include pxRem(width, 45);
+  @include pxRem(font-size, 24);
+  @include pxRem(border-radius, 0);
+  @include pxRem(border-top-right-radius, 5);
+  @include pxRem(border-bottom-right-radius, 5);
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding: 0;
+  text-align: center;
+  height: 100%;
+  font-weight: normal;
+  border: 1px solid map-get($color, primary);
+  border-bottom: #{f-pxRem(2)} solid  map-get($color, green-light);
+  background: map-get($color, primary);
+  color: map-get($color, white)
+}
+.form-input,
+.form-control,
+.input-search,
+.form-textarea {
+  @include pxRem(padding, 12 15);
+  @include pxRem(border-radius, 5);
+  @include pxRem(font-size, map-get($font-size, md));
+  transition: all 0.5s ease;
+  border: 1px solid map-get($color, border);
+  box-shadow: 16 0 0 0.2rem rgba(0, 123, 255, .25);
+  &:focus {
+    box-shadow: none;
+    border: 1px solid map-get($color, primary);
   }
-  .required {
-    position: relative;
-    &:after {
-    content: '*';
-    margin-left: 5px;
+  &::placeholder {
+    color:rgba(map-get($color, text), 0.3);
+  }
+  ~ .error-msg {
+    @include pxRem(font-size, map-get($font-size, sm));
     color: map-get($color, red);
-    }
-  }
-  .invalid {
-    border: 1px solid map-get($color, red);
-  }
-  .error-msg {
-    @include border-radius(3px);
-    background: map-get($color, red);
-    color: map-get($color, white);
-    font-size: map-get($font-size, xs);
-    padding: 4px 10px;
     position: absolute;
-    right: 15px;
-    bottom: -23px;
+    left: 0;
+    top: 100%;
     display: none;
-    &:before {
-      content: "";
-      display:block;
-      width: 0;
-      height: 0;
-      position: absolute;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-bottom: 6px solid map-get($color, red);
-      right: 10px;
-      top: -5px;
-    }
-  }
-  .form-input {
-    &.invalid {
-      + .error-msg {
-        display: block;
-      }
-    } 
   }
 }

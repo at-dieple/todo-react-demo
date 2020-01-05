@@ -7,11 +7,20 @@ $breakpoints: (
   largest: 1280px
 );
 $color: (
-  primary: darken(adjust-hue(#51a351, -10), 5%),
-  hover-color: #51a351,
-  secondary: #424242,
-  border: #eeeeee,
+  primary: #53c2c2,
+  secondary: #554E8F,
+  border: #e2e2e2,
+  text: #82A0B7,
+  background: #F9FCFF,
   white: #ffffff,
+  black: #000000,
+  yellow: #FFD506,
+  green-light: #49b4af,
+  danger: #dd4b39,
+  // primary: darken(adjust-hue(#51a351, -10), 5%),
+  // hover-color: #51a351,
+  // secondary: #424242,
+  // border: #eeeeee,
   white-c: #fbfbfb,
   white-e: #eeeeee,
   rgba-black: rgba(0, 0, 0, 0.07),
@@ -41,3 +50,16 @@ $font-size: (
 $font-family: (
   body: "montserrat, sans-serif",
 );
+$font-family-default: "M PLUS Rounded 1c", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$font-icon: (
+  icon-add: "\e900",
+  icon-all: "\e901",
+  icon-planning: "\e902",
+  icon-completed: "\e903",
+  icon-remove: "\e904",
+  icon-list: "\e905",
+  icon-alls: "\e906",
+  icon-close: "\e907",
+  icon-trash: "\e908",
+)

@@ -15,15 +15,16 @@ export class Header extends React.Component<Header.Props> {
   render() {
     return (
       <header className="page-header">
-        <div className="container">
-          <div className="center-text">
-            {/* <Link to="/about">
-              <img alt="asiantech" src={"../assets/images/logo.png"}>
-            </Link> */}
-            <a href={'/about'}>
-              <img className="logo" src={'./assets/images/logo.png'} alt="asiantech" />
-            </a>
+        <div className="container flex-between">
+          <div className="header-left">
+            <h3>Hello !</h3>
+            {/* <h5>You have {{activeTodo}} <span v-text="activeTodo > 1 ? 'tasks' : 'task'"></span> left</h5> */}
           </div>
+          {/* <div className="header-center">
+          </div>
+          <div className="header-right">
+            <a onClick="signoutButtonPressed">Logout</a>
+          </div> */}
         </div>
       </header>
     );

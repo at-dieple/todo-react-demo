@@ -9,9 +9,27 @@ export namespace Footer {
 export class Footer extends React.Component<Footer.Props> {
   render() {
     return (
-      <footer className="footer">
-        <p>© Asian Tech 2019 All Rights Reserved</p>
-      </footer>
+      <div className="page-footer">
+        <ul className="todos-footer-filter">
+          <li className="filter-item">
+            <i className="icon-all"></i>
+            <span className="filter-text">All Tasks</span>
+          </li>
+          <li className="filter-item">
+            <i className="icon-planning"></i>
+            <span className="filter-text">Active</span>
+          </li>
+          <li className="filter-item">
+            <i className="icon-completed"></i>
+            <span className="filter-text">Completed</span>
+          </li>
+          <li className="filter-item">
+            <i className="icon-remove"></i>
+            <span className="filter-text">Clear completed</span>
+          </li>
+          <li className="slide"></li>
+        </ul>
+      </div>
     );
   }
 }

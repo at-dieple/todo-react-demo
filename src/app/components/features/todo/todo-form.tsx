@@ -136,88 +136,17 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
   render() {
     const {} = this.props;
     return (
-      <section className="contact-form">
-        <h2 className="home-title">登録</h2>
-        <form onSubmit={this.onSubmit} onChange={this.formChange}>
-          <div className="row">
-            <div className="form-group col-7">
-              <label className="form-label required">名前</label>
-              <input
-                className={`form-input ${
-                  !this.state.form.fields['name'].isValid &&
-                  this.state.form.fields['name'].isTouched
-                    ? 'invalid'
-                    : ''
-                }`}
-                name="name"
-                value={this.state.form.fields['name'].value || ''}
-                onChange={this.handleChange}
-              />
-              <span className="error-msg">名前には1文字以上10文字以下入力してください。</span>
-            </div>
-            <div className="form-group col-5">
-              <label className="form-label required">年齢</label>
-              <input
-                className={`form-input ${
-                  !this.state.form.fields['age'].isValid && this.state.form.fields['age'].isTouched
-                    ? 'invalid'
-                    : ''
-                }`}
-                name="age"
-                value={this.state.form.fields['age'].value || ''}
-                onChange={this.handleChange}
-              />
-              {this.state.form.fields['age'].errors['age'] ? (
-                <span className="error-msg">年齢には3桁以下の数字で入力してください。</span>
-              ) : (
-                <span className="error-msg">年齢には1以上の数字を入力してくさい。</span>
-              )}
-            </div>
-          </div>
-          <div className="row">
-            <div className="form-group col-12">
-              <label className="form-label">コメント</label>
-              <textarea
-                className={`form-input ${
-                  !this.state.form.fields['comment'].isValid &&
-                  this.state.form.fields['comment'].isTouched
-                    ? 'invalid'
-                    : ''
-                }`}
-                rows={5}
-                name="comment"
-                value={this.state.form.fields['comment'].value || ''}
-                onChange={this.handleChange}
-              />
-              <span className="error-msg">This field is required</span>
-            </div>
-          </div>
-          <div className="row">
-            <div className="btn-group col-12">
-              <button
-                type="submit"
-                className={`btn btn-primary btn-animated ${
-                  this.state.isProcessing ? 'show' : 'hide'
-                }`}
-                disabled={this.state.isProcessing || !this.state.form.isValid}
-              >
-                <span className="animated-icon">
-                  <i className="fa fa-spinner fa-spin" />
-                </span>
-                <span className="animated-label">登録</span>
-              </button>
-              <button
-                type="button"
-                onClick={this.resetForm}
-                className="btn btn-outline btn-default"
-                disabled={this.state.isProcessing}
-              >
-                キャンセル
-              </button>
-            </div>
+      <div className="form-section">
+        <form className="form-add-task">
+          <div className="form-group">
+            <input type="text" className="form-input" placeholder="Add a task..." />
+            <button type="submit" className="input-group-addon" onClick={this.formChange}>
+              <i className="icon-add"></i>
+              Add
+            </button>
           </div>
         </form>
-      </section>
+      </div>
     );
   }
 }
