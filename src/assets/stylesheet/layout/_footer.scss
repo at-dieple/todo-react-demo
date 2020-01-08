@@ -4,55 +4,44 @@
   z-index: 2;
   bottom: 0;
   width: 100%;
-  height: auto;
-  box-shadow: 0 #{f-pxRem(-5)} #{f-pxRem(5)} #{f-pxRem(-5)} scale-color($color: map-get($color, text), $lightness: 80%,);
-  .todos-footer-filter {
-    @extend %flex-between;
-    flex-grow: 3;
-    position: relative;
-  }
-  .filter-item {
-    @include pxRem(padding, 10 0);
-    cursor: pointer;
-    position: relative;
-    width: 100%;
-    text-align: center;
-    transition: color .5s linear;
-    [class^="icon-"] {
-      @include pxRem(font-size, 22);
-      display: block;
-      font-weight: bold;
-    }
-    &.active {
-      color: map-get($color, primary);
-    }
-    &:nth-of-type(1).active ~ .slide {
-      left: calc((100% / 4) * 0);
-    }
-    &:nth-of-type(2).active ~ .slide {
-      left: calc((100% / 4) * 1);
-    }
-    &:nth-of-type(3).active ~ .slide {
-      left: calc((100% / 4) * 2);
-    }
-    &:nth-of-type(4).active ~ .slide {
-      left: calc((100% / 4) * 3);
-    }
-  }
-  .slide {
-    @include pxRem(height, 2);
-    background: map-get($color, primary);
-    width: calc(100% / 4);
+  box-shadow: 0 #{f-pxRem(-5)} #{f-pxRem(5)} #{f-pxRem(-5)} map-get($color, border);
+  .filter-action {
+    @include pxRem(width, 50);
+    @include pxRem(height, 50);
+    @include pxRem(top, -25);
     position: absolute;
-    left: 0;
-    top: -1px;
-    transition: left 0.3s ease-out;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    background-color: map-get($color, primary);
+    transform: translateX(-50%);
+    left: 50%;
+    .icon-add {
+      @include pxRem(font-size, 28);
+      @include pxRem(line-height, 50);
+      color: map-get($color, white);
+    }
   }
 }
-@include respond-below("medium") {
-  .page-footer {
-    .filter-text {
-      @include pxRem(font-size, 9);
+.filter-list {
+  display: flex;
+  justify-content: space-around;
+  .filter-item {
+    @include pxRem(padding, 16 0 12);
+    @include pxRem(font-size, 9);
+    @include pxRem(line-height, 16);
+    flex: 1;
+    text-align: center;
+    &.active {
+      color: map-get($color, primary);
+      box-shadow: 0 #{f-pxRem(4)} #{f-pxRem(8)} 0 map-get($color, background);
+    }
+    .icon {
+      @include pxRem(font-size, 20);
+    }
+    &-custom {
+      border-bottom: #{f-pxRem(3)} solid map-get($color, border);
+      @include pxRem(margin-bottom, 16);
     }
   }
 }

@@ -9,27 +9,30 @@ export namespace Footer {
 export class Footer extends React.Component<Footer.Props> {
   render() {
     return (
-      <div className="page-footer">
-        <ul className="todos-footer-filter">
-          <li className="filter-item">
-            <i className="icon-all"></i>
-            <span className="filter-text">All Tasks</span>
+      <footer className="page-footer">
+        <ul className="filter-list d-flex">
+          <li className="filter-item active">
+            <i className="icon fas fa-list-ul bold d-block"></i>All
           </li>
           <li className="filter-item">
-            <i className="icon-planning"></i>
-            <span className="filter-text">Active</span>
+            <i className="icon fas fa-clipboard-list d-block"></i>Active
+          </li>
+          <li className="filter-item filter-item-custom">
+            <div className="filter-action d-inline-block">
+            <i className="icon-add"><i className="fas fa-plus"></i></i>
+            </div>
           </li>
           <li className="filter-item">
-            <i className="icon-completed"></i>
-            <span className="filter-text">Completed</span>
+            <i className="icon fas fa-clipboard-check bold d-block"></i>Completed
           </li>
           <li className="filter-item">
-            <i className="icon-remove"></i>
-            <span className="filter-text">Clear completed</span>
+            <i className="icon fas fa-clipboard bold d-block"></i>Clear
           </li>
-          <li className="slide"></li>
         </ul>
-      </div>
+        <div className="filter-action d-inline-block">
+          <i className="icon-add fas fa-plus"></i>
+        </div>
+      </footer>
     );
   }
 }

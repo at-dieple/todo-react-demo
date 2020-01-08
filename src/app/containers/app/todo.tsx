@@ -4,10 +4,9 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { RouteComponentProps } from 'react-router';
 import { RootState } from 'app/reducers';
 import { omit } from 'app/utils';
-import { Header, Footer, Alert } from 'app/components';
-import { AlertActions } from 'app/components/shared/alert/alert.actions';
+import { Header, Footer } from 'app/components';
 import { CharacterActions } from 'app/components/features/todo/character.actions';
-import { TodoForm } from 'app/components/features/todo/todo-form';
+// import { TodoForm } from 'app/components/features/todo/todo-form';
 import { TodoList } from 'app/components/features/todo/todo-list';
 
 export namespace App {
@@ -16,7 +15,6 @@ export namespace App {
     pageData: RootState.PageState; // Main data of page
     notification: RootState.NotificationState; // data for notification
     actions: CharacterActions; // Character actions
-    alertActions: AlertActions; // Notification actions
   }
 }
 
@@ -28,8 +26,7 @@ export namespace App {
     return { pageData: state.pageData, notification: state.notification };
   },
   (dispatch: Dispatch): Pick<App.Props, any> => ({
-    actions: bindActionCreators(omit(CharacterActions, 'Type'), dispatch),
-    alertActions: bindActionCreators(omit(AlertActions, 'Type'), dispatch)
+    actions: bindActionCreators(omit(CharacterActions, 'Type'), dispatch)
   })
 )
 export class App extends React.Component<App.Props> {
@@ -38,20 +35,18 @@ export class App extends React.Component<App.Props> {
   }
 
   render() {
-    const { pageData, actions, alertActions, notification } = this.props;
+    const { pageData, actions } = this.props;
     return (
       <div className="page-wrap page-todo">
         <Header />
-        <Alert notification={notification} alerter={alertActions} />
         <main className="page-main">
           <div className="container">
-            <TodoForm onSave={actions.newCharacter} alerter={alertActions} />
+            {/* <TodoForm onSave={actions.newCharacter} /> */}
             <TodoList
               data={pageData}
               onLoad={actions.listCharacter}
               onDelete={actions.deleteCharacter}
               onUpdate={actions.updateCharacter}
-              alerter={alertActions}
             />
           </div>
         </main>

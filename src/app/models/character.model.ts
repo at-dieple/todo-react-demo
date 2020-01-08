@@ -2,9 +2,8 @@
 
 export interface CharacterModel {
   id?: number;
-  name: string;
-  age: number;
-  comment?: string;
+  text: string;
+  completed?: boolean;
   [key: string]: any;
 }
 

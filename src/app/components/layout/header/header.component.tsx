@@ -15,16 +15,23 @@ export class Header extends React.Component<Header.Props> {
   render() {
     return (
       <header className="page-header">
-        <div className="container flex-between">
-          <div className="header-left">
-            <h3>Hello !</h3>
-            {/* <h5>You have {{activeTodo}} <span v-text="activeTodo > 1 ? 'tasks' : 'task'"></span> left</h5> */}
+        <div className="container">
+          <div className="header-top">
+            <div className="heading text-centerd ">
+              <h1>TODO</h1>
+            </div>
           </div>
-          {/* <div className="header-center">
-          </div>
-          <div className="header-right">
-            <a onClick="signoutButtonPressed">Logout</a>
-          </div> */}
+          <ul className="filter-list d-flex">
+            <li className="filter-item">
+              <div className="filter-number">3</div>All
+            </li>
+            <li className="filter-item">
+              <div className="filter-number">2</div>Active
+            </li>
+            <li className="filter-item">
+              <div className="filter-number">1</div>Completed
+            </li>
+          </ul>
         </div>
       </header>
     );

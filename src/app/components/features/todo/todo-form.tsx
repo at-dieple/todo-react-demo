@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { CharacterModel } from 'app/models/character.model';
-import { API } from 'app/utils/api';
+// import { API } from 'app/utils/api';
 import { FormValidation } from 'app/utils/form-validation';
 
 export namespace TodoForm {
   // character form property definitions
   export interface Props {
     onSave: (obj: CharacterModel) => void;
-    alerter: any;
   }
   // character form state definitions
   export interface State {
@@ -83,28 +82,28 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
    * Note: We can use redux-thunk to make async action instead of this function
    */
   register = (data: CharacterModel) => {
-    API.post('/characters', data)
-      .then((res: any) => {
-        // call action newCharacter throught property onSave to update state of character list
-        this.props.onSave(res.data);
-        // display message after register sucessfully
-        this.props.alerter.show({
-          type: 'success',
-          msg: `${res.data.name}を追加しました。`
-        });
-        this.resetForm();
-      })
-      .catch((err: any) => {
-        // display error message in case failed to register
-        this.props.alerter.show({
-          type: 'danger',
-          msg: '登録が失敗しました。後でもう一度やり直してください。',
-          timeout: 10000
-        });
-        this.setState({
-          isProcessing: false
-        });
-      });
+    // API.post('/characters', data)
+    //   .then((res: any) => {
+    //     // call action newCharacter throught property onSave to update state of character list
+    //     this.props.onSave(res.data);
+    //     // display message after register sucessfully
+    //     this.props.alerter.show({
+    //       type: 'success',
+    //       msg: `${res.data.name}を追加しました。`
+    //     });
+    //     this.resetForm();
+    //   })
+    //   .catch((err: any) => {
+    //     // display error message in case failed to register
+    //     this.props.alerter.show({
+    //       type: 'danger',
+    //       msg: '登録が失敗しました。後でもう一度やり直してください。',
+    //       timeout: 10000
+    //     });
+    //     this.setState({
+    //       isProcessing: false
+    //     });
+    //   });
   };
 
   resetForm = () => {
@@ -141,8 +140,7 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
           <div className="form-group">
             <input type="text" className="form-input" placeholder="Add a task..." />
             <button type="submit" className="input-group-addon" onClick={this.formChange}>
-              <i className="icon-add"></i>
-              Add
+              <i className="fas fa-plus"></i>
             </button>
           </div>
         </form>

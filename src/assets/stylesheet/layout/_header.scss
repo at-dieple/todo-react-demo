@@ -1,20 +1,32 @@
 
 .page-header {
-  @include pxRem(height, 75);
-  background: map-get($color, primary);
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 99;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  color: map-get($color, white);
-  a {
+  @include pxRem(height, 80);
+  background-color: map-get($color, primary);
+  .header-top {
+    @include pxRem(padding, 15 0);
+    @include pxRem(font-size, 24);
     color: map-get($color, white);
+    .icon-menu {
+      @include pxRem(font-size, 20);
+    }
+    .avatar {
+      @include pxRem(width, 40);
+      @include pxRem(height, 40);
+    }
+    .img-covered {
+      border-radius: 50%;
+    }
   }
-  .container {
-    height: 100%;
-    position: relative;
+  .filter-list {
+    @include pxRem(border-radius, 7);
+    box-shadow: 0 #{f-pxRem(1)} #{f-pxRem(5)} 0 rgba(0, 0, 0, 0.08);
+    background-color: map-get($color, white);
+    .filter-item {
+      padding: 12px 0 9px;
+    }
+    .filter-number {
+      @include pxRem(font-size, 14);
+    }
   }
 }
 .logo {

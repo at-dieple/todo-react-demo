@@ -3,8 +3,8 @@
 }
 body {
   // @include font-smoothing(antialiased);
-  @include pxRem(font-size, map-get($font-size, md));
-  @include pxRem(padding-top, 80);
+  @include pxRem(font-size, map-get($font-size, normal));
+  // @include pxRem(padding-top, 80);
   background: map-get($color, background);
   color: map-get($color, text);
   font-family: $font-family-default;
