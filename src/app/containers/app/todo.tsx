@@ -6,7 +6,7 @@ import { RootState } from 'app/reducers';
 import { omit } from 'app/utils';
 import { Header, Footer } from 'app/components';
 import { CharacterActions } from 'app/components/features/todo/character.actions';
-// import { TodoForm } from 'app/components/features/todo/todo-form';
+import { TodoForm } from 'app/components/features/todo/todo-form';
 import { TodoList } from 'app/components/features/todo/todo-list';
 
 export namespace App {
@@ -41,7 +41,7 @@ export class App extends React.Component<App.Props> {
         <Header />
         <main className="page-main">
           <div className="container">
-            {/* <TodoForm onSave={actions.newCharacter} /> */}
+            <TodoForm onSave={actions.newCharacter} />
             <TodoList
               data={pageData}
               onLoad={actions.listCharacter}
