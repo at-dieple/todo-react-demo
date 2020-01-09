@@ -9,9 +9,9 @@
   height: 100%;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.4);
-  .modal-content {
+  .modal-main {
     @include pxRem(border-radius, 7);
-    width: 80%;
+    width: 90%;
     background-color: map-get($color, white);
     position: fixed;
     top: 40%;
@@ -21,14 +21,12 @@
     border: 1px solid map-get($color, grey);
     animation: animatetop 0.7s ease normal;
     .modal-header {
-      @include pxRem(padding, 10);
-      border-bottom: 1px solid map-get($color, border);
+      @include pxRem(padding, 15 20 0);
     }
     .close {
-      @include pxRem(top, 10);
-      @include pxRem(right, 10);
-      @include pxRem(font-size, 28);
-      color: map-get($color, white);
+      @include pxRem(top, 15);
+      @include pxRem(right, 20);
+      @include pxRem(font-size, 16);
       float: right;
       font-weight: bold;
       position: absolute;

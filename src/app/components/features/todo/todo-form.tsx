@@ -11,6 +11,7 @@ export namespace TodoForm {
   // character form state definitions
   export interface State {
     isProcessing: boolean; // to check the form is submitting or not, it helps handle UI/UX
+    isOpenModal: boolean; // to check the modal form is show or not
     form: FormValidation; // form validation
   }
 }
@@ -21,7 +22,8 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
     // initial state of this component
     this.state = {
       isProcessing: false,
-      form: this.initForm()
+      isOpenModal: true,
+      form: this.initForm(),
     };
   }
 
@@ -50,21 +52,6 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
             }
           }
         }
-      },
-      age: {
-        value: '',
-        rules: {
-          age: (value: any) => {
-            const regexp = /^\d{1,3}$/;
-            return regexp.test(value);
-          },
-          number: (value: any) => {
-            return +value > 0;
-          }
-        }
-      },
-      comment: {
-        value: ''
       }
     });
   };
@@ -132,40 +119,37 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
     });
   };
 
+  closeForm = (e: any) => {
+    this.setState({isOpenModal: false});
+  }
+
   render() {
     const {} = this.props;
     return (
-      // <div className="form-section">
-      //   <form className="form-add-task">
-      //     <div className="form-group">
-      //       <input type="text" className="form-input" placeholder="Add a task..." />
-      //       <button type="submit" className="input-group-addon" onClick={this.formChange}>
-      //         <i className="fas fa-plus"></i>
-      //       </button>
-      //     </div>
-      //   </form>
-      // </div>
       <div className="fade-wrapper">
-        <div className="modal isOpenModal">
-          <div className="modal-content">
-            <div className="modal-header is-relative">
-              <h4 className="txt-center">Create a todo</h4>
-              <span className="close pointer">&times;</span>
+        {
+          this.state.isOpenModal ?
+          <div className="modal isOpenModal">
+            <div className="modal-main">
+              <div className="modal-header is-relative">
+                <h4 className="txt-center">Create a todo</h4>
+                <span className="close pointer" onClick={this.closeForm}><i className="fas fa-times"></i></span>
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  maxLength={30}
+                  className="form-input"
+                  placeholder="Enter a task!"
+                  onChange={this.handleChange}
+                />
+                <button type="submit" className="btn btn-primary btn-block mt-3">
+                  <i className="icon-add pointer">Save</i>
+                </button>
+              </div>
             </div>
-            <div className="form-group">
-              <input
-                type="text"
-                maxLength={30}
-                className="form-input"
-                placeholder="Enter a task!"
-                onChange={this.handleChange}
-              />
-              <button type="submit" className="btn btn-primary btn-block mt-3">
-                <i className="icon-add pointer">Save</i>
-              </button>
-            </div>
-          </div>
-        </div>
+          </div> : ''
+        }
       </div>
     );
   }
