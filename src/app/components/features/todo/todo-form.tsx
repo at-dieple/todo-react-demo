@@ -69,28 +69,7 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
    * Note: We can use redux-thunk to make async action instead of this function
    */
   register = (data: CharacterModel) => {
-    // API.post('/characters', data)
-    //   .then((res: any) => {
-    //     // call action newCharacter throught property onSave to update state of character list
-    //     this.props.onSave(res.data);
-    //     // display message after register sucessfully
-    //     this.props.alerter.show({
-    //       type: 'success',
-    //       msg: `${res.data.name}を追加しました。`
-    //     });
-    //     this.resetForm();
-    //   })
-    //   .catch((err: any) => {
-    //     // display error message in case failed to register
-    //     this.props.alerter.show({
-    //       type: 'danger',
-    //       msg: '登録が失敗しました。後でもう一度やり直してください。',
-    //       timeout: 10000
-    //     });
-    //     this.setState({
-    //       isProcessing: false
-    //     });
-    //   });
+    //
   };
 
   resetForm = () => {

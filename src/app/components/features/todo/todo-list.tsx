@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { TodoItem } from './todo-item';
 import { CharacterModel } from 'app/models/character.model';
-// import { TodoForm } from './todo-form';
 
 export namespace TodoList {
   // Character List property definitions
@@ -93,7 +92,6 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
     const { onDelete, onUpdate } = this.props;
     const {data} = this.state;
     console.log(data);
-    // const { selectedItem, canLoadmore } = this.state;
     return (
       <div className="todo-list-section">
         <h3 className="left mb-4">Your task</h3>
