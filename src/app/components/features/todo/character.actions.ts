@@ -3,13 +3,13 @@ import { CharacterModel } from 'app/models';
 
 export namespace CharacterActions {
   export enum Type {
-    CHARACTER_LIST = 'CHARACTER_LIST',
-    CHARACTER_NEW = 'CHARACTER_NEW',
+    TODO_LIST = 'TODO_LIST',
+    TODO_NEW = 'TODO_NEW',
     CHARACTER_UPDATE = 'CHARACTER_UPDATE',
     CHARACTER_DELETE = 'CHARACTER_DELETE'
   }
-  export const listCharacter = createAction<any>(Type.CHARACTER_LIST);
-  export const newCharacter = createAction<CharacterModel>(Type.CHARACTER_NEW);
+  export const listTodo = createAction<any>(Type.TODO_LIST);
+  export const newTodo = createAction<CharacterModel>(Type.TODO_NEW);
   export const updateCharacter = createAction<CharacterModel>(Type.CHARACTER_UPDATE);
   export const deleteCharacter = createAction<CharacterModel['id']>(Type.CHARACTER_DELETE);
 }

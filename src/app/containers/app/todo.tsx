@@ -23,7 +23,7 @@ export namespace App {
  */
 @connect(
   (state: any): Pick<App.Props, any> => {
-    return { pageData: state.pageData, notification: state.notification };
+    return { pageData: state.pageData};
   },
   (dispatch: Dispatch): Pick<App.Props, any> => ({
     actions: bindActionCreators(omit(CharacterActions, 'Type'), dispatch)
@@ -41,10 +41,10 @@ export class App extends React.Component<App.Props> {
         <Header />
         <main className="page-main">
           <div className="container">
-            <TodoForm onSave={actions.newCharacter} />
+            <TodoForm onSave={actions.newTodo} />
             <TodoList
               data={pageData}
-              onLoad={actions.listCharacter}
+              onLoad={actions.listTodo}
               onDelete={actions.deleteCharacter}
               onUpdate={actions.updateCharacter}
             />

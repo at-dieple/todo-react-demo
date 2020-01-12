@@ -37,7 +37,7 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
      * define fields value and rule to validate
      */
     return new FormValidation({
-      name: {
+      task: {
         value: '',
         rules: {
           character: (value: any) => {
@@ -59,7 +59,12 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
   onSubmit = (e: any) => {
     e.preventDefault();
     this.setState({ isProcessing: true });
-    this.register(this.state.form.data);
+    let term = {
+      id: Math.random(),
+      text: this.state.form.data.task,
+      completed: false
+    };
+    this.register(term);
   };
 
   /**
@@ -69,7 +74,9 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
    * Note: We can use redux-thunk to make async action instead of this function
    */
   register = (data: CharacterModel) => {
-    //
+    this.props.onSave(data);
+    this.setState({isOpenModal: false});
+    this.resetForm();
   };
 
   resetForm = () => {
@@ -117,12 +124,13 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
               <div className="form-group">
                 <input
                   type="text"
+                  name="task"
                   maxLength={30}
                   className="form-input"
                   placeholder="Enter a task!"
                   onChange={this.handleChange}
                 />
-                <button type="submit" className="btn btn-primary btn-block mt-3">
+                <button type="submit" className="btn btn-primary btn-block mt-3" onClick={this.onSubmit}>
                   <i className="icon-add pointer">Save</i>
                 </button>
               </div>

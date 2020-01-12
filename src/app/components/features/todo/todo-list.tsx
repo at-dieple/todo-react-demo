@@ -24,32 +24,6 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
   constructor(props: TodoList.Props, state: TodoList.State) {
     super(props, state);
     // initial state of this component
-    this.state = {
-      canLoadmore: true,
-      selectedItem: undefined,
-      data: [
-        {
-          id: 1,
-          text: 'Task 1',
-          completed: true
-        },
-        {
-          id: 2,
-          text: 'Task 2',
-          completed: false
-        },
-        {
-          id: 3,
-          text: 'Task 3',
-          completed: false
-        },
-        {
-          id: 4,
-          text: 'Task 4',
-          completed: false
-        }
-      ]
-    };
   }
 
   componentDidMount() {
@@ -73,6 +47,29 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
    */
   fetchData = () => {
     console.log('fetch');
+    const data = [
+      {
+        id: 1,
+        text: 'Task 1',
+        completed: true
+      },
+      {
+        id: 2,
+        text: 'Task 2',
+        completed: false
+      },
+      {
+        id: 3,
+        text: 'Task 3',
+        completed: false
+      },
+      {
+        id: 4,
+        text: 'Task 4',
+        completed: false
+      }
+    ];
+    this.props.onLoad(data);
   };
 
   /**
@@ -89,8 +86,7 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
   }
 
   render() {
-    const { onDelete, onUpdate } = this.props;
-    const {data} = this.state;
+    const { onDelete, onUpdate, data } = this.props;
     console.log(data);
     return (
       <div className="todo-list-section">

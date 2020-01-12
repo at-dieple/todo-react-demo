@@ -10,11 +10,22 @@ export namespace TodoItem {
     order: number; // to show item order at the first column
     task: any; // information of a specific task
   }
+  export interface State {
+    completed: any
+  }
 }
 
 export class TodoItem extends React.Component<TodoItem.Props> {
-  constructor(props: TodoItem.Props) {
+  constructor(props: TodoItem.Props, state: TodoItem.State) {
     super(props);
+    this.state = {
+      completed: false
+    }
+  }
+
+  componentDidMount = () => {
+    const { task } = this.props.task;
+    this.setState({completed: task});
   }
 
   handleDelete = () => {
@@ -45,12 +56,14 @@ export class TodoItem extends React.Component<TodoItem.Props> {
 
   render() {
     const { task } = this.props;
+    // const { completed } = this.state;
     return (
       <div className={`todo-item ${task.completed ? 'task-completed' : ''}`}>
         <div className="task">
           <input type="checkbox"
             className="hidden-box"
             id={task.id}
+            // checked={completed}
             onChange={this.handleUpdate}
             />
           <label htmlFor={task.id} className="check-label">
