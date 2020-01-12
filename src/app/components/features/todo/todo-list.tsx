@@ -97,8 +97,8 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
               key={item.id}
               order={i + 1}
               task={item}
-              updateCharacter={onUpdate}
-              deleteCharacter={onDelete}
+              updateTodo={onUpdate}
+              deleteTodo={onDelete}
              />
           ))
         ) : (

@@ -5,8 +5,8 @@ import { CharacterModel } from 'app/models/character.model';
 export namespace TodoItem {
   // Character Item property definitions
   export interface Props {
-    updateCharacter: (character: CharacterModel) => void; //
-    deleteCharacter: (id: number) => void; //
+    updateTodo: (character: CharacterModel) => void; //
+    deleteTodo: (id: number) => void; //
     order: number; // to show item order at the first column
     task: any; // information of a specific task
   }
@@ -42,7 +42,7 @@ export class TodoItem extends React.Component<TodoItem.Props> {
    * Note: We can use redux-thunk to make async action instead of this function
    */
   onDelete() {
-    //
+    this.props.deleteTodo(this.props.task.id);
   }
 
   /**
@@ -51,7 +51,7 @@ export class TodoItem extends React.Component<TodoItem.Props> {
    * Note: We can use redux-thunk to make async action instead of this function
    */
   onUpdate = () => {
-    //
+    this.props.updateTodo(this.props.task.id);
   };
 
   render() {

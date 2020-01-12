@@ -11,13 +11,20 @@ export const characterReducer = handleActions<RootState.PageState, CharacterMode
       return [...state, ...action.payload];
     },
     [CharacterActions.Type.TODO_NEW]: (state, action) => {
-      return action.payload ? [action.payload, ...state] : state;
+      state = action.payload ? [action.payload, ...state] : state;
+      localStorage.setItem('tasks', JSON.stringify(state));
+      return state;
     },
-    [CharacterActions.Type.CHARACTER_UPDATE]: (state, action: any) => {
-      return state.map((item) => (item.id === action.payload.id ? action.payload : item));
+    [CharacterActions.Type.TODO_UPDATE]: (state, action: any) => {
+      state = state.map((item) => (item.id === action.payload.id ? action.payload : item));
+      console.log(state);
+      localStorage.setItem('tasks', JSON.stringify(state));
+      return state;
     },
-    [CharacterActions.Type.CHARACTER_DELETE]: (state, action) => {
-      return state.filter((item: CharacterModel) => item.id !== (action.payload as any));
+    [CharacterActions.Type.TODO_DELETE]: (state, action) => {
+      state = state.filter((item: CharacterModel) => item.id !== (action.payload as any));
+      localStorage.setItem('tasks', JSON.stringify(state));
+      return state;
     }
   },
   initialState

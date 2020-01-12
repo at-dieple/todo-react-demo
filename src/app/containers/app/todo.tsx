@@ -45,8 +45,8 @@ export class App extends React.Component<App.Props> {
             <TodoList
               data={pageData}
               onLoad={actions.listTodo}
-              onDelete={actions.deleteCharacter}
-              onUpdate={actions.updateCharacter}
+              onDelete={actions.deleteTodo}
+              onUpdate={actions.updateTodo}
             />
           </div>
         </main>

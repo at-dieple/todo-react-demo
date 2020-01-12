@@ -5,13 +5,13 @@ export namespace CharacterActions {
   export enum Type {
     TODO_LIST = 'TODO_LIST',
     TODO_NEW = 'TODO_NEW',
-    CHARACTER_UPDATE = 'CHARACTER_UPDATE',
-    CHARACTER_DELETE = 'CHARACTER_DELETE'
+    TODO_UPDATE = 'TODO_UPDATE',
+    TODO_DELETE = 'TODO_DELETE'
   }
   export const listTodo = createAction<any>(Type.TODO_LIST);
   export const newTodo = createAction<CharacterModel>(Type.TODO_NEW);
-  export const updateCharacter = createAction<CharacterModel>(Type.CHARACTER_UPDATE);
-  export const deleteCharacter = createAction<CharacterModel['id']>(Type.CHARACTER_DELETE);
+  export const updateTodo = createAction<CharacterModel>(Type.TODO_UPDATE);
+  export const deleteTodo = createAction<CharacterModel['id']>(Type.TODO_DELETE);
 }
 
 export type CharacterActions = Omit<typeof CharacterActions, 'Type'>;
