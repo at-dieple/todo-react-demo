@@ -8,24 +8,24 @@ export namespace TodoItem {
     updateTodo: (character: CharacterModel) => void; //
     deleteTodo: (id: number) => void; //
     order: number; // to show item order at the first column
-    task: any; // information of a specific task
+    task: any// information of a specific task
   }
   export interface State {
-    completed: boolean
+    taskState: any
   }
 }
 
-export class TodoItem extends React.Component<TodoItem.Props> {
+export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
   constructor(props: TodoItem.Props, state: TodoItem.State) {
     super(props);
     this.state = {
-      completed: true
+      taskState: {}
     }
   }
 
   componentDidMount = () => {
     // const { task } = this.props.task;
-    // this.setState({completed: task.completed});
+    this.setState({taskState: this.props.task});
   }
 
   handleDelete = () => {
@@ -51,26 +51,25 @@ export class TodoItem extends React.Component<TodoItem.Props> {
    * Note: We can use redux-thunk to make async action instead of this function
    */
   onUpdate = () => {
-    this.props.updateTodo(this.props.task.id);
+    this.props.updateTodo(this.props.task);
   };
 
   render() {
-    const { task } = this.props;
-    // const completed = this.state.completed;
+    const { taskState } = this.state;
     return (
-      <div className={`todo-item ${task.completed ? 'task-completed' : ''}`}>
+      <div className={`todo-item ${taskState.completed ? 'task-completed' : ''}`}>
         <div className="task">
           <input type="checkbox"
             className="hidden-box"
-            id={task.id}
-            value={task.text}
-            // checked={completed}
+            id={taskState.id || ''}
+            value={taskState.text || ''}
+            checked={taskState.completed || false}
             onChange={this.handleUpdate}
             />
-          <label htmlFor={task.id} className="check-label">
+          <label htmlFor={taskState.id} className="check-label">
             <span className="check-label-box"></span>
             <span className="check-label-text">
-              {task.text}
+              {taskState.text}
             </span>
           </label>
         </div>

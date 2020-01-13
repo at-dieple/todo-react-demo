@@ -14,13 +14,13 @@ export namespace TodoList {
   // Todo List state definitions
   export interface State {
     selectedItem: number | undefined;
-    data: any // to check a specific item is selected, it help control a confirm dialog
+    data: any ;// to check a specific item is selected, it help control a confirm dialog
   }
 }
 
 export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
   constructor(props: TodoList.Props, state: TodoList.State) {
-    super(props, state);
+    super(props);
     // initial state of this component
   }
 
@@ -34,6 +34,7 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
   fetchData = () => {
     const data = JSON.parse(localStorage.getItem('tasks') || '[]');
     this.props.onLoad(data);
+    this.setState({data: data});
   };
 
   /**
