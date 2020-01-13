@@ -4,11 +4,13 @@ import { CharacterModel } from 'app/models/character.model';
 import { FormValidation } from 'app/utils/form-validation';
 
 export namespace TodoForm {
-  // character form property definitions
+  // todo form property definitions
   export interface Props {
-    onSave: (obj: CharacterModel) => void;
+    onSave: (obj: CharacterModel) => void,
+    toggleForm: () => void,
+    showForm: boolean
   }
-  // character form state definitions
+  // todo form state definitions
   export interface State {
     isProcessing: boolean; // to check the form is submitting or not, it helps handle UI/UX
     isOpenModal: boolean; // to check the modal form is show or not
@@ -75,7 +77,7 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
    */
   register = (data: CharacterModel) => {
     this.props.onSave(data);
-    this.setState({isOpenModal: false});
+    this.props.toggleForm();
     this.resetForm();
   };
 
@@ -106,15 +108,15 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
   };
 
   closeForm = (e: any) => {
-    this.setState({isOpenModal: false});
+    this.props.toggleForm();
   }
 
   render() {
-    const {} = this.props;
+    const { showForm } = this.props;
     return (
       <div className="fade-wrapper">
         {
-          this.state.isOpenModal ?
+          showForm ?
           <div className="modal isOpenModal">
             <div className="modal-main">
               <div className="modal-header is-relative">

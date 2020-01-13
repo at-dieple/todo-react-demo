@@ -11,7 +11,7 @@ export namespace TodoItem {
     task: any; // information of a specific task
   }
   export interface State {
-    completed: any
+    completed: boolean
   }
 }
 
@@ -19,20 +19,20 @@ export class TodoItem extends React.Component<TodoItem.Props> {
   constructor(props: TodoItem.Props, state: TodoItem.State) {
     super(props);
     this.state = {
-      completed: false
+      completed: true
     }
   }
 
   componentDidMount = () => {
-    const { task } = this.props.task;
-    this.setState({completed: task});
+    // const { task } = this.props.task;
+    // this.setState({completed: task.completed});
   }
 
   handleDelete = () => {
     this.onDelete();
   };
 
-  handleUpdate = () => {
+  handleUpdate = (event: any) => {
     this.onUpdate();
   };
 
@@ -56,13 +56,14 @@ export class TodoItem extends React.Component<TodoItem.Props> {
 
   render() {
     const { task } = this.props;
-    // const { completed } = this.state;
+    // const completed = this.state.completed;
     return (
       <div className={`todo-item ${task.completed ? 'task-completed' : ''}`}>
         <div className="task">
           <input type="checkbox"
             className="hidden-box"
             id={task.id}
+            value={task.text}
             // checked={completed}
             onChange={this.handleUpdate}
             />

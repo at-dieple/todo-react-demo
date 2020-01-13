@@ -17,7 +17,6 @@ export const characterReducer = handleActions<RootState.PageState, CharacterMode
     },
     [CharacterActions.Type.TODO_UPDATE]: (state, action: any) => {
       state = state.map((item) => (item.id === action.payload.id ? action.payload : item));
-      console.log(state);
       localStorage.setItem('tasks', JSON.stringify(state));
       return state;
     },

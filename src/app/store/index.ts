@@ -14,8 +14,6 @@ export function configureStore(initialState?: RootState): Store<RootState> {
     RootState
   >;
 
-  console.log('store: ', store);
-
   if (module.hot) {
     module.hot.accept('app/reducers', () => {
       const nextReducer = require('app/reducers');

@@ -2,11 +2,20 @@ import * as React from 'react';
 
 export namespace Footer {
   export interface Props {
-    //
+    toggleForm: () => void
   }
 }
 
 export class Footer extends React.Component<Footer.Props> {
+
+  constructor(props: Footer.Props, state?: any) {
+    super(props, state)
+  }
+
+  openAddForm = () => {
+    this.props.toggleForm();
+  }
+
   render() {
     return (
       <footer className="page-footer">
@@ -29,7 +38,7 @@ export class Footer extends React.Component<Footer.Props> {
             <i className="icon fas fa-clipboard bold d-block"></i>Clear
           </li>
         </ul>
-        <div className="filter-action d-inline-block">
+        <div className="filter-action d-inline-block" onClick={this.openAddForm}>
           <i className="icon-add fas fa-plus"></i>
         </div>
       </footer>

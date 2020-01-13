@@ -9,7 +9,6 @@ import { App } from './app';
 // prepare store
 const history = createBrowserHistory();
 const store = configureStore();
-console.log('store in main: ', store);
 
 ReactDOM.render(
   <Provider store={store}>
