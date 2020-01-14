@@ -52,6 +52,7 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
 
   render() {
     const { onDelete, onUpdate, data } = this.props;
+    console.log(this.props);
     return (
       <div className="todo-list-section">
         <h3 className="left mb-4">Your task</h3>

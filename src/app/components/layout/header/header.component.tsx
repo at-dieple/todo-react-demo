@@ -17,11 +17,11 @@ export class Header extends React.Component<Header.Props> {
     let result: number = 0;
     if (type === 'active') {
       data.map((item: any) => {
-        result = !item.completed ? result + 1 : result;
+        result = (item && !item.completed) ? result + 1 : result;
       })
     } else {
       data.map((item: any) => {
-        result = item.completed ? result + 1 : result;
+        result = (item && item.completed) ? result + 1 : result;
       })
     }
     return result;

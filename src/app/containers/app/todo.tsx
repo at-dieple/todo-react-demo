@@ -69,7 +69,9 @@ export class App extends React.Component<App.Props, App.State> {
             />
           </div>
         </main>
-        <Footer toggleForm={this.toggleForm} />
+        <Footer toggleForm={this.toggleForm}
+                data={pageData}
+                onLoad={actions.listTodo}/>
       </div>
     );
   }
