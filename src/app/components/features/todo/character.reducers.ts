@@ -8,7 +8,7 @@ const initialState: RootState.PageState = [];
 export const characterReducer = handleActions<RootState.PageState, CharacterModel>(
   {
     [CharacterActions.Type.TODO_LIST]: (state, action: any) => {
-      return [...state, ...action.payload];
+      return [...action.payload];
     },
     [CharacterActions.Type.TODO_NEW]: (state, action) => {
       state = action.payload ? [action.payload, ...state] : state;

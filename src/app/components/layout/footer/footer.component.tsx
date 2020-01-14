@@ -33,7 +33,7 @@ export class Footer extends React.Component<Footer.Props> {
         result = data.map((item: any) => item);
     }
     console.log('---------',result);
-    // this.props.onLoad(result);
+    this.props.onLoad(result);
   }
 
   render() {
