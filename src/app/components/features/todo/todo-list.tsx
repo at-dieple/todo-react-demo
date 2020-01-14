@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { TodoItem } from './todo-item';
-import { CharacterModel } from 'app/models/character.model';
+import { TodoModel } from 'app/models/todo.model';
 
 export namespace TodoList {
   // Todo List property definitions
   export interface Props {
     onLoad: (data: any) => void; // action fetch data
-    onUpdate: (character: CharacterModel) => void; // action update todo
+    onUpdate: (character: TodoModel) => void; // action update todo
     onDelete: (id: number) => void; // action delete todo
     data: any; // todo list
   }

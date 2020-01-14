@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { CharacterModel } from 'app/models/character.model';
+import { TodoModel } from 'app/models/todo.model';
 // import { API } from 'app/utils/api';
 import { FormValidation } from 'app/utils/form-validation';
 
 export namespace TodoForm {
   // todo form property definitions
   export interface Props {
-    onSave: (obj: CharacterModel) => void,
+    onSave: (obj: TodoModel) => void,
     toggleForm: () => void,
     showForm: boolean
   }
@@ -75,7 +75,7 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
    * Call api to register a new character
    * Note: We can use redux-thunk to make async action instead of this function
    */
-  register = (data: CharacterModel) => {
+  register = (data: TodoModel) => {
     this.props.onSave(data);
     this.props.toggleForm();
     this.resetForm();

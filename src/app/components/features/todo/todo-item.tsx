@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { CharacterModel } from 'app/models/character.model';
+import { TodoModel } from 'app/models/todo.model';
 // import { ConfirmDialog } from '../../shared/dialog/dialog.component';
 
 export namespace TodoItem {
   // Character Item property definitions
   export interface Props {
-    updateTodo: (character: CharacterModel) => void; //
+    updateTodo: (character: TodoModel) => void; //
     deleteTodo: (id: number) => void; //
     order: number; // to show item order at the first column
     task: any// information of a specific task

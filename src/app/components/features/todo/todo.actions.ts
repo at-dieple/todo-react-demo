@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { CharacterModel } from 'app/models';
+import { TodoModel } from 'app/models';
 
 export namespace CharacterActions {
   export enum Type {
@@ -9,9 +9,9 @@ export namespace CharacterActions {
     TODO_DELETE = 'TODO_DELETE'
   }
   export const listTodo = createAction<any>(Type.TODO_LIST);
-  export const newTodo = createAction<CharacterModel>(Type.TODO_NEW);
-  export const updateTodo = createAction<CharacterModel>(Type.TODO_UPDATE);
-  export const deleteTodo = createAction<CharacterModel['id']>(Type.TODO_DELETE);
+  export const newTodo = createAction<TodoModel>(Type.TODO_NEW);
+  export const updateTodo = createAction<TodoModel>(Type.TODO_UPDATE);
+  export const deleteTodo = createAction<TodoModel['id']>(Type.TODO_DELETE);
 }
 
 export type CharacterActions = Omit<typeof CharacterActions, 'Type'>;

@@ -1,1 +1,1 @@
-export * from './character.model';
+export * from './todo.model';

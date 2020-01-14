@@ -1,11 +1,11 @@
 import { handleActions } from 'redux-actions';
 import { RootState } from 'app/reducers/state';
-import { CharacterActions } from './character.actions';
-import { CharacterModel } from 'app/models';
+import { CharacterActions } from './todo.actions';
+import { TodoModel } from 'app/models';
 
 const initialState: RootState.PageState = [];
 
-export const characterReducer = handleActions<RootState.PageState, CharacterModel>(
+export const todoReducer = handleActions<RootState.PageState, TodoModel>(
   {
     [CharacterActions.Type.TODO_LIST]: (state, action: any) => {
       return [...action.payload];
@@ -28,7 +28,7 @@ export const characterReducer = handleActions<RootState.PageState, CharacterMode
       return state;
     },
     [CharacterActions.Type.TODO_DELETE]: (state, action) => {
-      state = state.filter((item: CharacterModel) => item.id !== (action.payload as any));
+      state = state.filter((item: TodoModel) => item.id !== (action.payload as any));
       localStorage.setItem('tasks', JSON.stringify(state));
       return state;
     }

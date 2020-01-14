@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router';
 import { RootState } from 'app/reducers';
 import { omit } from 'app/utils';
 import { Header, Footer } from 'app/components';
-import { CharacterActions } from 'app/components/features/todo/character.actions';
+import { CharacterActions } from 'app/components/features/todo/todo.actions';
 import { FooterActions} from 'app/components/layout/footer/footer.actions';
 import { TodoForm } from 'app/components/features/todo/todo-form';
 import { TodoList } from 'app/components/features/todo/todo-list';
