@@ -54,7 +54,7 @@ export class App extends React.Component<App.Props, App.State> {
     const { showForm } = this.state;
     return (
       <div className="page-wrap page-todo">
-        <Header />
+        <Header data={pageData} />
         <main className="page-main">
           <div className="container">
             <TodoForm onSave={actions.newTodo}
