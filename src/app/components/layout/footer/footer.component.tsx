@@ -7,12 +7,20 @@ export namespace Footer {
     filterTodo: (status: string) => void,
     data: any
   }
+
+  export interface State {
+    filterStatus: string
+  }
+
 }
 
-export class Footer extends React.Component<Footer.Props> {
+export class Footer extends React.Component<Footer.Props, Footer.State> {
 
   constructor(props: Footer.Props, state?: any) {
-    super(props, state)
+    super(props, state);
+    this.state = {
+      filterStatus: 'all'
+    }
   }
 
   openAddForm = () => {
@@ -20,18 +28,20 @@ export class Footer extends React.Component<Footer.Props> {
   }
 
   handleFilter = (status: string = '') => {
+    this.setState({filterStatus: status});
     this.props.filterTodo(status);
     // this.props.onLoad(result);
   }
 
   render() {
+    const { filterStatus } = this.state;
     return (
       <footer className="page-footer">
         <ul className="filter-list d-flex">
-          <li className="filter-item active" onClick={() => this.handleFilter()}>
+          <li className={`filter-item ${filterStatus === 'all' ? 'active' : ''}`} onClick={() => this.handleFilter('all')}>
             <i className="icon fas fa-list-ul bold d-block"></i>All
           </li>
-          <li className="filter-item" onClick={() => this.handleFilter('active')}>
+          <li className={`filter-item ${filterStatus === 'active' ? 'active' : ''}`} onClick={() => this.handleFilter('active')}>
             <i className="icon fas fa-clipboard-list d-block"></i>Active
           </li>
           <li className="filter-item filter-item-custom">
@@ -39,7 +49,7 @@ export class Footer extends React.Component<Footer.Props> {
             <i className="icon-add"><i className="fas fa-plus"></i></i>
             </div>
           </li>
-          <li className="filter-item" onClick={() => this.handleFilter('completed')}>
+          <li className={`filter-item ${filterStatus === 'completed' ? 'active' : ''}`} onClick={() => this.handleFilter('completed')}>
             <i className="icon fas fa-clipboard-check bold d-block"></i>Completed
           </li>
           <li className="filter-item">
