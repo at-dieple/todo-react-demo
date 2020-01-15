@@ -6,7 +6,6 @@ import { RootState } from 'app/reducers';
 import { omit } from 'app/utils';
 import { Header, Footer } from 'app/components';
 import { TodoActions } from 'app/components/features/todo/todo.actions';
-import { FooterActions} from 'app/components/layout/footer/footer.actions';
 import { TodoForm } from 'app/components/features/todo/todo-form';
 import { TodoList } from 'app/components/features/todo/todo-list';
 
@@ -17,7 +16,6 @@ export namespace App {
     notification: RootState.NotificationState; // data for notification
     actions: TodoActions; // Todo actions
     openForm: RootState.OpenTodoFormState; // state for opening add form
-    actionsOpenForm: FooterActions;
   }
   export interface State {
     showForm: boolean,
@@ -34,8 +32,7 @@ export namespace App {
     return { pageData: state.pageData, openForm: state.openForm};
   },
   (dispatch: Dispatch): Pick<App.Props, any> => ({
-    actions: bindActionCreators(omit(TodoActions, 'Type'), dispatch),
-    actionsOpenForm: bindActionCreators(omit(FooterActions, 'Type'), dispatch)
+    actions: bindActionCreators(omit(TodoActions, 'Type'), dispatch)
   })
 )
 export class App extends React.Component<App.Props, App.State> {

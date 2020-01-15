@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TodoModel } from 'app/models/todo.model';
-// import { API } from 'app/utils/api';
 import { FormValidation } from 'app/utils/form-validation';
 
 export namespace TodoForm {
