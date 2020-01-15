@@ -24,10 +24,6 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
     // initial state of this component
   }
 
-  componentDidMount() {
-    // this.fetchData();
-  }
-
   /**
    * Fetch Data
    */

@@ -47,7 +47,16 @@ export class App extends React.Component<App.Props, App.State> {
   }
 
   componentDidMount() {
+    console.log('Did Mount')
     this.fetchData();
+  }
+
+  componentDidUpdate(nextProps: any) {
+    console.log('Did Mount');
+    const { pageData } = this.props;
+    if (nextProps.pageData.length !== pageData.length) {
+      this.setState({data: this.props.pageData});
+    }
   }
 
   fetchData = () => {
@@ -77,10 +86,10 @@ export class App extends React.Component<App.Props, App.State> {
     }
     console.log('---------',result);
     this.setState({data: result});
-    // this.props.actions.listTodo(result);
   }
 
   render() {
+    console.log('todo render');
     const { pageData, actions } = this.props;
     const { showForm, data } = this.state;
     return (
