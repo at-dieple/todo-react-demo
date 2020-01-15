@@ -20,7 +20,8 @@ export namespace App {
     actionsOpenForm: FooterActions;
   }
   export interface State {
-    showForm: boolean
+    showForm: boolean,
+    data: any
   }
 }
 
@@ -40,18 +41,48 @@ export class App extends React.Component<App.Props, App.State> {
   constructor(props: App.Props) {
     super(props);
     this.state = {
-      showForm: false
+      showForm: false,
+      data: []
     }
   }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = () => {
+    const data = JSON.parse(localStorage.getItem('tasks') || '[]');
+    this.props.actions.listTodo(data);
+    this.setState({data: data});
+  };
 
   toggleForm = () => {
     let isShowed = this.state.showForm;
     this.setState({showForm: isShowed ? false : true })
   }
 
+  filterTodo = (status: string = '') => {
+    const { pageData } = this.props;
+    console.log(pageData, status);
+    let result: any = [];
+    switch (status) {
+      case 'active':
+        result = pageData.filter((item: any) => !item.completed);
+        break;
+      case 'completed':
+        result = pageData.filter((item: any) => item.completed);
+        break;
+      default:
+        result = pageData.map((item: any) => item);
+    }
+    console.log('---------',result);
+    this.setState({data: result});
+    // this.props.actions.listTodo(result);
+  }
+
   render() {
     const { pageData, actions } = this.props;
-    const { showForm } = this.state;
+    const { showForm, data } = this.state;
     return (
       <div className="page-wrap page-todo">
         <Header data={pageData} />
@@ -62,7 +93,7 @@ export class App extends React.Component<App.Props, App.State> {
                       toggleForm={this.toggleForm}
             />
             <TodoList
-              data={pageData}
+              data={data}
               onLoad={actions.listTodo}
               onDelete={actions.deleteTodo}
               onUpdate={actions.updateTodo}
@@ -71,7 +102,8 @@ export class App extends React.Component<App.Props, App.State> {
         </main>
         <Footer toggleForm={this.toggleForm}
                 data={pageData}
-                onLoad={actions.listTodo}/>
+                onLoad={actions.listTodo}
+                filterTodo={this.filterTodo}/>
       </div>
     );
   }
