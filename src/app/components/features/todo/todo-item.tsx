@@ -37,18 +37,14 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
   };
 
   /**
-   * Delete character
-   * Call api to delete character
-   * Note: We can use redux-thunk to make async action instead of this function
+   * Delete todo
    */
   onDelete() {
     this.props.deleteTodo(this.props.task.id);
   }
 
   /**
-   * Update character
-   * Call api to update character
-   * Note: We can use redux-thunk to make async action instead of this function
+   * Update todo
    */
   onUpdate = () => {
     this.props.updateTodo(this.props.task);

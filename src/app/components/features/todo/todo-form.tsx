@@ -42,10 +42,6 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
       task: {
         value: '',
         rules: {
-          character: (value: any) => {
-            const regexp = /^.{1,10}$/;
-            return regexp.test(value);
-          },
           required: (value: any) => {
             if (value) {
               return value.trim() !== '';
@@ -93,6 +89,7 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
    * @param event is a object
    */
   handleChange = (e: any) => {
+    console.log(this.state.form);
     const { name, value } = e.target;
     /**
      * call method field change which is provide by form field validation

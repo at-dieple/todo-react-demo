@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router';
 import { RootState } from 'app/reducers';
 import { omit } from 'app/utils';
 import { Header, Footer } from 'app/components';
-import { CharacterActions } from 'app/components/features/todo/todo.actions';
+import { TodoActions } from 'app/components/features/todo/todo.actions';
 import { FooterActions} from 'app/components/layout/footer/footer.actions';
 import { TodoForm } from 'app/components/features/todo/todo-form';
 import { TodoList } from 'app/components/features/todo/todo-list';
@@ -15,13 +15,14 @@ export namespace App {
   export interface Props extends RouteComponentProps<void> {
     pageData: RootState.PageState; // Main data of page
     notification: RootState.NotificationState; // data for notification
-    actions: CharacterActions; // Todo actions
+    actions: TodoActions; // Todo actions
     openForm: RootState.OpenTodoFormState; // state for opening add form
     actionsOpenForm: FooterActions;
   }
   export interface State {
     showForm: boolean,
-    data: any
+    data: any,
+    filterStatus: string
   }
 }
 
@@ -33,7 +34,7 @@ export namespace App {
     return { pageData: state.pageData, openForm: state.openForm};
   },
   (dispatch: Dispatch): Pick<App.Props, any> => ({
-    actions: bindActionCreators(omit(CharacterActions, 'Type'), dispatch),
+    actions: bindActionCreators(omit(TodoActions, 'Type'), dispatch),
     actionsOpenForm: bindActionCreators(omit(FooterActions, 'Type'), dispatch)
   })
 )
@@ -42,20 +43,22 @@ export class App extends React.Component<App.Props, App.State> {
     super(props);
     this.state = {
       showForm: false,
-      data: []
+      data: [],
+      filterStatus: 'all'
     }
   }
 
-  componentDidMount() {
-    console.log('Did Mount')
+  componentDidMount = () => {
+    console.log('Did Mount');
     this.fetchData();
   }
 
-  componentDidUpdate(nextProps: any) {
-    console.log('Did Mount');
+  componentDidUpdate = (nextProps: any) => {
     const { pageData } = this.props;
+    console.log('Did Update', nextProps);
     if (nextProps.pageData.length !== pageData.length) {
-      this.setState({data: this.props.pageData});
+      // this.setState({data: this.props.pageData});
+      this.filterTodo(this.state.filterStatus);
     }
   }
 
@@ -67,12 +70,11 @@ export class App extends React.Component<App.Props, App.State> {
 
   toggleForm = () => {
     let isShowed = this.state.showForm;
-    this.setState({showForm: isShowed ? false : true })
+    this.setState({showForm: isShowed ? false : true });
   }
 
   filterTodo = (status: string = '') => {
     const { pageData } = this.props;
-    console.log(pageData, status);
     let result: any = [];
     switch (status) {
       case 'active':
@@ -84,8 +86,12 @@ export class App extends React.Component<App.Props, App.State> {
       default:
         result = pageData.map((item: any) => item);
     }
-    console.log('---------',result);
+    this.setState({filterStatus: status});
     this.setState({data: result});
+  }
+
+  checkStatusChange() {
+
   }
 
   render() {
