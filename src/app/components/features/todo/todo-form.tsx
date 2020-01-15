@@ -12,8 +12,6 @@ export namespace TodoForm {
   }
   // todo form state definitions
   export interface State {
-    isProcessing: boolean; // to check the form is submitting or not, it helps handle UI/UX
-    isOpenModal: boolean; // to check the modal form is show or not
     form: FormValidation; // form validation
   }
 }
@@ -23,8 +21,6 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
     super(props);
     // initial state of this component
     this.state = {
-      isProcessing: false,
-      isOpenModal: true,
       form: this.initForm(),
     };
   }
@@ -56,7 +52,6 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
 
   onSubmit = (e: any) => {
     e.preventDefault();
-    this.setState({ isProcessing: true });
     let term = {
       id: Math.random(),
       text: this.state.form.data.task,
@@ -66,10 +61,8 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
   };
 
   /**
-   * Register new character
-   * @param data is a Character object
-   * Call api to register a new character
-   * Note: We can use redux-thunk to make async action instead of this function
+   * Register new todo
+   * @param data is a Todo object
    */
   register = (data: TodoModel) => {
     this.props.onSave(data);
@@ -79,7 +72,6 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
 
   resetForm = () => {
     this.setState({
-      isProcessing: false,
       form: this.initForm()
     });
   };
@@ -97,13 +89,6 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
     this.state.form.fieldChange(name, value);
   };
 
-  formChange = (e: any) => {
-    // update form state
-    this.setState({
-      form: this.state.form
-    });
-  };
-
   closeForm = (e: any) => {
     this.props.toggleForm();
   }
@@ -114,7 +99,7 @@ export class TodoForm extends React.Component<TodoForm.Props, TodoForm.State> {
       <div className="fade-wrapper">
         {
           showForm ?
-          <div className="modal isOpenModal">
+          <div className="modal">
             <div className="modal-main">
               <div className="modal-header is-relative">
                 <h4 className="txt-center">Create a todo</h4>

@@ -6,7 +6,7 @@ export namespace TodoList {
   // Todo List property definitions
   export interface Props {
     onLoad: (data: any) => void; // action fetch data
-    onUpdate: (character: TodoModel) => void; // action update todo
+    onUpdate: (todo: TodoModel) => void; // action update todo
     onDelete: (id: number) => void; // action delete todo
     data: any; // todo list
   }
@@ -56,7 +56,6 @@ export class TodoList extends React.Component<TodoList.Props, TodoList.State> {
           data.map((item: any, i: number) => (
             <TodoItem
               key={item.id}
-              order={i + 1}
               task={item}
               updateTodo={onUpdate}
               deleteTodo={onDelete}

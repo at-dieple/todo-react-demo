@@ -1,5 +1,3 @@
-/** CharacterMVC model definitions **/
-
 export interface TodoModel {
   id?: number;
   text: string;

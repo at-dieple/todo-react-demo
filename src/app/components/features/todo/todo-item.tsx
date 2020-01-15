@@ -3,11 +3,10 @@ import { TodoModel } from 'app/models/todo.model';
 // import { ConfirmDialog } from '../../shared/dialog/dialog.component';
 
 export namespace TodoItem {
-  // Character Item property definitions
+  // Todo Item property definitions
   export interface Props {
-    updateTodo: (character: TodoModel) => void; //
+    updateTodo: (todo: TodoModel) => void; //
     deleteTodo: (id: number) => void; //
-    order: number; // to show item order at the first column
     task: any// information of a specific task
   }
   export interface State {

@@ -11,7 +11,7 @@ import { TodoForm } from 'app/components/features/todo/todo-form';
 import { TodoList } from 'app/components/features/todo/todo-list';
 
 export namespace App {
-  // Character container property definitions
+  // Todo container property definitions
   export interface Props extends RouteComponentProps<void> {
     pageData: RootState.PageState; // Main data of page
     notification: RootState.NotificationState; // data for notification
