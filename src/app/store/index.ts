@@ -1,5 +1,4 @@
 import { Store, createStore, applyMiddleware } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 import { logger } from 'app/middleware';
 import { RootState, rootReducer } from 'app/reducers';
 
