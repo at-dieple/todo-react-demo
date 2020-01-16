@@ -83,8 +83,7 @@ export class App extends React.Component<App.Props, App.State> {
       default:
         result = pageData.map((item: any) => item);
     }
-    this.setState({filterStatus: status});
-    this.setState({data: result});
+    this.setState({data: result, filterStatus: status});
   }
 
   checkStatusChange() {
@@ -115,7 +114,8 @@ export class App extends React.Component<App.Props, App.State> {
         <Footer toggleForm={this.toggleForm}
                 data={pageData}
                 onLoad={actions.listTodo}
-                filterTodo={this.filterTodo}/>
+                filterTodo={this.filterTodo}
+                clearCompleted={actions.clearCompleted}/>
       </div>
     );
   }

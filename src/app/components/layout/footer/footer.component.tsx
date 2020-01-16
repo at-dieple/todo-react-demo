@@ -5,6 +5,7 @@ export namespace Footer {
     toggleForm: () => void,
     onLoad: (data: any) => void,
     filterTodo: (status: string) => void,
+    clearCompleted: (data: any) => void,
     data: any
   }
 
@@ -33,6 +34,11 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
     // this.props.onLoad(result);
   }
 
+  handleClearCompleted = () => {
+    console.log('clearCompleted');
+    this.props.clearCompleted(this.props.data);
+  }
+
   render() {
     const { filterStatus } = this.state;
     return (
@@ -52,7 +58,7 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
           <li className={`filter-item ${filterStatus === 'completed' ? 'active' : ''}`} onClick={() => this.handleFilter('completed')}>
             <i className="icon fas fa-clipboard-check bold d-block"></i>Completed
           </li>
-          <li className="filter-item">
+          <li className="filter-item" onClick={this.handleClearCompleted}>
             <i className="icon fas fa-clipboard bold d-block"></i>Clear
           </li>
         </ul>

@@ -10,7 +10,7 @@ export const todoReducer = handleActions<RootState.PageState, TodoModel>(
     [TodoActions.Type.TODO_LIST]: (state, action: any) => {
       return [...action.payload];
     },
-    [TodoActions.Type.TODO_NEW]: (state, action) => {
+    [TodoActions.Type.TODO_NEW]: (state, action: any) => {
       state = action.payload ? [action.payload, ...state] : state;
       localStorage.setItem('tasks', JSON.stringify(state));
       return state;
@@ -27,8 +27,13 @@ export const todoReducer = handleActions<RootState.PageState, TodoModel>(
       localStorage.setItem('tasks', JSON.stringify(state));
       return state;
     },
-    [TodoActions.Type.TODO_DELETE]: (state, action) => {
+    [TodoActions.Type.TODO_DELETE]: (state, action: any) => {
       state = state.filter((item: TodoModel) => item.id !== (action.payload as any));
+      localStorage.setItem('tasks', JSON.stringify(state));
+      return state;
+    },
+    [TodoActions.Type.TODO_CLEAR_COMPLETED]: (state) => {
+      state = state.filter((item: any) => !item.completed);
       localStorage.setItem('tasks', JSON.stringify(state));
       return state;
     }
